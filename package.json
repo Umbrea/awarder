@@ -5,13 +5,13 @@
   "author": "RetroAstro",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config /webpack/webpack.config.dev.js",
-    "build": "npm run clean && cross-env NODE_ENV=production node /webpack/build.js",
-    "clean": "rimraf /dist",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js",
+    "build": "npm run clean && cross-env NODE_ENV=production node webpack/build.js",
+    "clean": "rimraf dist/",
     "lint": "eslint --ext .js --ext .jsx -- . ",
     "lint-fix": "eslint --ext .js --ext .jsx --fix -- . ",
-    "lint-scss": "stylelint /src/**/*.scss",
-    "lint-scss-fix": "stylelint /src/**/*.scss --fix"
+    "lint-scss": "stylelint src/**/*.scss",
+    "lint-scss-fix": "stylelint src/**/*.scss --fix"
   },
   "husky": {
     "hooks": {
@@ -19,12 +19,8 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "src/**/*.js": [
       "eslint --fix",
-      "git add"
-    ],
-    "*.scss": [
-      "stylelint --fix",
       "git add"
     ]
   },
@@ -46,7 +42,6 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.2.0",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
@@ -91,6 +86,7 @@
   "browserslist": [
     "> 1%",
     "last 5 versions",
-    "not ie <= 10"
+    "not ie <= 10",
+    "not op_mini all"
   ]
 }
